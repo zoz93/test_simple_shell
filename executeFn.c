@@ -1,6 +1,5 @@
 #include "shell.h"
 
-/*will edit betty soon*/
 
 char **get_av_with_flags(char *line, int status)
 {

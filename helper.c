@@ -7,11 +7,17 @@
  */
 int check_mode(int argc)
 {
+	struct stat stdin_stat;
+
+    fstat(STDIN_FILENO, &stdin_stat);
 	
 	if(isatty(STDIN_FILENO) && argc == 1)
 		return (INTERACTIVE);
-	else if(argc == 2)
-		return (NON_INTERACTIVE);
+	if((!isatty(STDIN_FILENO) || S_ISFIFO(stdin_stat.st_mode)) && argc == 1)
+		return (NON_INTERACTIVE_PIPED);
+	if((!isatty(STDIN_FILENO) && argc == 2))
+		return (NON_INTERACTIVE_FILE);
+	
 	return (ERROR);
 }
 

@@ -6,7 +6,7 @@ char *get_command_from_user(list_path *current)
 	size_t n = 0;
 	char *line = NULL;
 
-	write(STDOUT_FILENO, "^_* -> ", 7);
+	write(STDOUT_FILENO, "xxx -> ", 7);
 	nread = getline(&line, &n, stdin);
 	if (nread == EOF)
 	{

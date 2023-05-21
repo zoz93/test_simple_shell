@@ -1,8 +1,6 @@
 #include "shell.h"
 
-/*
-    betty
-*/
+
 void check_file(char *file)
 {
     struct stat fileStat;

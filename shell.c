@@ -16,15 +16,15 @@ int main(int argc, char *argv[], char *env[])
 	current = set_all_paths_to_list();
 	mode = check_mode(argc);
 	status = &t;
-	if (mode == NON_INTERACTIVE)
-		check_file(argv[1]);
 	while (++counter && non_int_count)
 	{
-		if (mode == NON_INTERACTIVE)
+		if (mode == NON_INTERACTIVE_PIPED)
 		{
-			line = get_command_from_file(argv[1]);
+			line = get_command_from_pipe();
 			non_int_count = 0;/*stop*/
 		}
+		else if (mode == NON_INTERACTIVE_FILE)
+			line = get_command_from_file(argv[1]);
 		else if (mode == INTERACTIVE)
 			line = get_command_from_user(current);
 		if(!line)
@@ -57,7 +57,27 @@ int main(int argc, char *argv[], char *env[])
 			}
 		free_l_v(line, line_vector);
 	}
-	return (0);
+	exit(*status);
+}
+
+char *get_command_from_pipe()
+{
+	char input[1024];
+    ssize_t bytesRead;
+	char* command;
+	
+    bytesRead = read(STDIN_FILENO, input, 1024);
+	if(bytesRead == -1)
+		return (NULL);
+
+	input[bytesRead - 1] = '\0';
+    command = strtok(input, " ");
+	command = _strdup(command);
+	if (!command)
+		return (NULL);
+	
+	return command;
+	
 }
 void free_l_v(char * line, char ** line_vector)
 {

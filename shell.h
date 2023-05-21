@@ -9,15 +9,16 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-/*my macros*/
+/*macros*/
 #define INTERACTIVE 1
-#define NON_INTERACTIVE 0
+#define NON_INTERACTIVE_FILE 0
+#define NON_INTERACTIVE_PIPED 2
 #define ERROR -1
 /*Error status macros*/
 #define NOT_FOUND 127
 #define PERMISSION_DENIED 126
 #define EXIT_ERROR 2
-
+#define TOK_D " \t\r\n\a\""
 extern char **environ;
 /**
  * struct list_path - singly linked list
@@ -55,6 +56,7 @@ char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 
 /*====================================================================================*/
+char *get_command_from_pipe();
 void free_l_v(char * line, char ** line_vector);
 int is_dir(char *line);
 int _atoi(char *s);
