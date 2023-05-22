@@ -28,11 +28,11 @@ int _strlen(char *s)
  */
 int _strcmp(char *s1, char *s2)
 {
-	int i;
-	for (i = 0; ((s1[i] != '\0') || (s2[i] != '\0')); i++)
+	int x;
+	for (x = 0; ((s1[x] != '\0') || (s2[x] != '\0')); x++)
 	{
-		if (s1[i] - s2[i] != 0)
-			return (s1[i] - s2[i]);
+		if (s1[x] - s2[x] != 0)
+			return (s1[x] - s2[x]);
 	}
 	return (0);
 }
@@ -60,24 +60,6 @@ char *_strdup(char *str)
 }
 
 /**
- * _strcpy - copies the string pointed
- * @dest: char pointer
- * @src: char pointer
- * Return: char pinter
- */
-char *_strcpy(char *dest, char *src)
-{
-	int i;
-
-	for (i = 0; src[i] != '\0'; i++)
-	{
-		dest[i] = src[i];
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-/**
  * _strcat - concatenates two strings
  * @dest: char pointer left side
  * @src: char pointer right side
@@ -94,4 +76,20 @@ char *_strcat(char *dest, char *src)
 	}
 	dest[len + i] = '\0';
 	return (dest);
+}
+
+/**
+ * _strcpy - copies the string pointed
+ * @dest: char pointer
+ * @src: char pointer
+ * Return: char pinter
+ */
+char *_strcpy(char *dest, char *src) {
+    int i = 0;
+    while(src[i] != '\0') {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+    return dest;
 }

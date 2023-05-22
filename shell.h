@@ -55,21 +55,18 @@ unsigned int char_count(char *str);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 
-/*====================================================================================*/
 char *get_command_from_pipe();
 void free_l_v(char * line, char ** line_vector);
 int is_dir(char *line);
 int _atoi(char *s);
 void is_exit(char *line,char **line_vector, list_path *current,
-		char *program_name, int counter, int *status);
+char *program_name, int counter, int *status);
 void print_error(char *program_name , int counter,char *command, int type_of_error);
 void handle_comments(char *input);
-/*==*/
 void handle_semicolons(char *line);
 void execute_command_with_waitpid(char *path, char **av, char **env);
 int _setenv(const char *name, const char *value, int overwrite);
 int _unsetenv(const char *name);
-/*====*/
 char *num_to_char(int num);
 char *check_access(char *line_av_1, list_path *current);
 void execute_command(char *path, char **av, char **env, int *status);

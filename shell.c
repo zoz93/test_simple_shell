@@ -3,9 +3,9 @@
 /*
  * main - Entry point to the shell
  * @argc: arguements count
- * @argv: arguements values
- * @env: environment vector
- * Return : the process
+ * @argv: arguements val
+ * @env: environment vec
+ * Return :  process
  */
 int main(int argc, char *argv[], char *env[])
 {

@@ -139,7 +139,8 @@ char *check_access(char *line_av_1, list_path *current)
 		return (NULL);
 	while (current)
 	{
-		len = _strlen(current->path) + _strlen(line_av_1) + 2; /* to calculate the length of the full path*/
+		len = _strlen(current->path) + _strlen(line_av_1) + 2;
+		 /* to calculate the length of the full path*/
 		if (len > 1024)
 		{
 			write(STDERR_FILENO, "ERROR: Path too long\n", 21);

@@ -6,7 +6,7 @@ void execute_command_with_waitpid(char *path, char **av, char **env)
     int status;
 
     pid = fork();
-    if (pid == ERROR) {
+    if (pid == -1) {
         perror("fork");
         exit(EXIT_FAILURE);
     }
@@ -24,7 +24,7 @@ void handle_semicolons(char *line)
     char *token;
     char *args[100];
     int i;
-    token = strtok(line, ";"); // split on semicolons
+    token = strtok(line, ";"); 
     while (token != NULL)
     {
         handle_comments(token);
@@ -42,6 +42,6 @@ void handle_semicolons(char *line)
             execute_command_with_waitpid(args[0], args, NULL);
         }
 
-        token = strtok(NULL, ";"); // move on to the next command
+        token = strtok(NULL, ";"); 
     }
 }
